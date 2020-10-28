@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model UpdateResxFile.Models.LanguageComponentResourcesModel;
+
+@using (Html.BeginForm("Fetch1", "Home", FormMethod.Post))
+{
+    <br/>
+    <br/>
+    <div class="row" style="margin:20px;">
+        <div class="col-xs-offset-3 col-xs-3">
+            Language
+        </div>
+        <div class="col-xs-3">
+            @Html.DropDownListFor(m => m.Language,
+                        new SelectList((ViewData["LanguageComponentSettingsModel"] as LanguageComponentSettingsModel).Languages),
+                        new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="row" style="margin:20px;">
+        <div class="col-xs-offset-3 col-xs-3">
+            Component
+        </div>
+        <div class="col-xs-3">
+            @Html.DropDownListFor(m => m.Component,
+                        new SelectList((ViewData["LanguageComponentSettingsModel"] as LanguageComponentSettingsModel).Components),
+                        new { @class = "form-control" })
+        </div>
+    </div>
+
+    <input class="btn-primary col-xs-4 col-xs-offset-4" type="submit" name="Fetch" value="Fetch" />
+}
